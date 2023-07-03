@@ -7,10 +7,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+
       errorElement: <Error />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "movies/:id", element: <SingleMovie /> },
+      ],
     },
-    { path: "movies/:id", element: <SingleMovie /> },
   ]);
   return <RouterProvider router={router} />;
 }
